@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-01-2017 a las 10:41:45
+-- Tiempo de generación: 04-01-2017 a las 10:48:13
 -- Versión del servidor: 10.1.19-MariaDB
 -- Versión de PHP: 7.0.13
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `igb`
 --
+CREATE DATABASE IF NOT EXISTS `igb` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
+USE `igb`;
 
 -- --------------------------------------------------------
 
@@ -26,6 +28,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `igb_users`
 --
 
+DROP TABLE IF EXISTS `igb_users`;
 CREATE TABLE `igb_users` (
   `id` int(11) NOT NULL,
   `usuario` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
