@@ -1,0 +1,26 @@
+.cabecera{
+	display: table;
+	text-align: center;
+	background-color: white;
+	background-image: url("../img/concert negativo.jpg");
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	
+}
+
+.logo{
+	display: table-cell;
+	width: 65%;
+	margin: 0 auto;
+	padding: 1em 0em 1em 0em;
+}
+
+.botonsup{
+	display: table-cell;
+	vertical-align: middle;
+}
+
+
