@@ -1,7 +1,22 @@
 <?php include "header.php" ?>
 
 <script>
+    function modalBorr(user)
+    {   
+                $("#nombredeusuario").html(user);
+                $("#borrar").modal();
+                $("#aceptaborrar").click(function(){
+                    location.href='scrborrar.php?'+user; 
+                });
+                
+    }   
+
     $(document).ready(function(){
+        $.get("listar.php",function(data){
+                $(".lista").html(data)
+            });
+        $(".lista").slideDown();
+        
             $("#botonalta").click(function(){   
             $(".lista").hide();
             $(".modif").hide();
@@ -35,17 +50,18 @@
             });
             $(".borrar").slideDown();
         });
-    }); 
+    });
+    
+    
 
     
 </script>
 
     <div id="borrar" class="modal fade" role="dialog">
         <div class="loginaso">
-            <p>¿Está seguro de que desea borrar el usuario?</p>
-                <button type="button" onclick="location.href='scrborrar.php'">Aceptar</button>
-                <button type="button" onclick="$('#borrar').modal('toggle');">Cancelar</button>
-            </form>
+            <p>¿Está seguro de que desea borrar el usuario <span id="nombredeusuario"></span>?</p>
+                <button type="button" id="aceptaborrar">Aceptar</button>
+                <button type="button" onclick="alert("");">Cancelar</button>
         </div>
     </div>
 
@@ -60,7 +76,7 @@
             </ul>
         </div>
     </div>
-        
+        <div><p id="mensaje"></p></div>
         <div class="alta acordeon">
             <form action="enviar.php" method="POST" name="form1" id="form1">
                 <div class="row">
@@ -105,6 +121,7 @@
 					</div>
 				</div>
             </form>
+        
         </div>
         <div class="lista acordeon"></div>
         <div class="modif acordeon">cacafú</div>

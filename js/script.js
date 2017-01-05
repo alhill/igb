@@ -10,16 +10,6 @@ function Correito()
 	});
 }
 
-function ModalBorrar()
-{
-    $(document).ready(function(){
-            {
-				$("#borrar").modal();
-			}	
-	});
-}
-
-
 $(document).ready(function(){
 	function Izquierda(){
 		anchura = $(".lif").width();
