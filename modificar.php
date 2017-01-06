@@ -1,7 +1,7 @@
 <?php 
     include "conexion.php"; 
-    $url = $_SERVER['REQUEST_URI'];
-    $user = parse_url($url, PHP_URL_QUERY);
+    $url = $_SERVER['HTTP_REFERER'];
+    $usuario = parse_url($url, PHP_URL_QUERY);
 ?>
 
 <!DOCTYPE html>
@@ -18,63 +18,62 @@
 
 <?php
 
-function ValidacionRegistro(&$errors){
-    $pagina = basename($_SERVER['HTTP_REFERER']);
+    function ValidacionRegistro(&$errors){
+        $pagina = basename($_SERVER['HTTP_REFERER']);
 
-	$flag = true;
-	if($_POST['pw'] == '' or strlen($_POST['pw'])<6){
-		$errors[] = '<p>Contrase&ntilde;a demasiado corta o incorrecta</p>';
-		$flag = false;
-	}
-	if($_POST['email'] == '' or !preg_match("/^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/",$_POST['email'])){
-		$errors[] = '<p>Email vac&iacute;o o incorrecto</p>';
-		$flag = false;
-	}
-	if($_POST['nombre'] == ''){
-		$errors[] = '<p>Campo nombre vac&iacute;o</p>';
-		$flag = false;
-	}
-	if($_POST['apellidos'] == ''){
-		$errors[] = '<p>Campo apellidos vac&iacute;o</p>';
-		$flag = false;
-	}
-	if($_POST['fechanac'] == '' or (strtotime($_POST['fechanac']) > date(strtotime("-16 year"))+0)){
-		$errors[] = '<p>Campo fecha de nacimiento vac&iacute;o o edad menor de 16</p>';
-		$flag = false;
-	}   
-	
-	return $flag;
-}
+        $flag = true;
+        if($_POST['pw'] == '' or strlen($_POST['pw'])<6){
+            $errors[] = '<p>Contrase&ntilde;a demasiado corta o incorrecta</p>';
+            $flag = false;
+        }
+        if($_POST['email'] == '' or !preg_match("/^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/",$_POST['email'])){
+            $errors[] = '<p>Email vac&iacute;o o incorrecto</p>';
+            $flag = false;
+        }
+        if($_POST['nombre'] == ''){
+            $errors[] = '<p>Campo nombre vac&iacute;o</p>';
+            $flag = false;
+        }
+        if($_POST['apellidos'] == ''){
+            $errors[] = '<p>Campo apellidos vac&iacute;o</p>';
+            $flag = false;
+        }
+        if($_POST['fechanac'] == '' or (strtotime($_POST['fechanac']) > date(strtotime("-16 year"))+0)){
+            $errors[] = '<p>Campo fecha de nacimiento vac&iacute;o o edad menor de 16</p>';
+            $flag = false;
+        }   
+        return $flag;
+    }
 
-$errors=[];
+    $errors=[];
 
     $pw = $_POST ['pw'];
     $email = $_POST ['email'];
     $nombre = $_POST ['nombre'];
     $apellidos = $_POST ['apellidos'];
     $fechanac = $_POST ['fechanac'];
-    
+ 
     $todobien = ValidacionRegistro($errors);
     
-    if($todobien){
-        $resultado = mysqli_query($conexion, "SELECT * FROM igb_users WHERE usuario='$usuario'");
-        mysqli_query($conexion, "UPDATE igb_users SET 'usuario'=$usuario,'pw'=$pw, 'email'=$email, 'nombre'=$nombre, 'apellidos'=$apellidos 'fechanac'=$fechanac WHERE 'user'=$user");
+    if($todobien){       
+        mysqli_query($conexion, "UPDATE igb_users SET pw='$pw', email='$email', nombre='$nombre', apellidos='$apellidos', fechanac='$fechanac' WHERE usuario='$usuario'") or die("Error en la modificación de datos");
         header("Location: igbadmin.php");
+        echo "Modificación realizada correctamente";
     }
-    else{echo "caca";}
 
     $todobien = ValidacionRegistro($errors);
 
-//DESCOMENTAR PARA DEBUG
-if ($todobien == true)
-{
-	echo ("<p>Todos los datos son v&aacute;lidos, registro completado correctamente</p>");
-}
-else 
-{
-	echo ("<p>El registro fall&oacute;:</p><ul>");
-	foreach ($errors as $error){echo("<li>" . $error . "</li>");}
-	echo ("</ul>");
-}
-
+    //DESCOMENTAR PARA DEBUG
+    /*if ($todobien == true)
+    {
+        echo ("<p>Todos los datos son v&aacute;lidos, registro completado correctamente</p>");
+    }
+    else 
+    {
+        echo ("<p>El registro fall&oacute;:</p><ul>");
+        foreach ($errors as $error){echo("<li>" . $error . "</li>");}
+        echo ("</ul>");
+    }*/
 ?>
+</body>
+</html>

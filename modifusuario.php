@@ -15,12 +15,18 @@
 					<div class="col-sm-3"></div><div class="col-sm-3"><label>Nombre de usuario</label></div><div class="col-sm-3"><?php echo($row["usuario"]); ?></div><div class="col-sm-3"></div>	
 				</div>
 				<div class="row">
-					<div class="col-sm-3"></div><div class="col-sm-3"><label>Contraseña</label></div><div class="col-sm-3"><input type="text" name="pw" value="<?php echo($row["pw"]); ?>" /></div><div class="col-sm-3"></div>	
+					<div class="col-sm-3"></div><div class="col-sm-3"><label>Contraseña</label></div><div class="col-sm-3"><input type="password" name="pw" value="<?php echo($row["pw"]); ?>" /></div><div class="col-sm-3"></div>	
+				</div>
+                <div class="row">
+					<div class="col-sm-3"></div><div class="col-sm-3"><label>Repetir contraseña</label></div><div class="col-sm-3"><input type="password" name="pw2" value="<?php echo($row["pw"]); ?>" /></div><div class="col-sm-3"></div>	
 				</div>
 				<div class="row">
 				</div>
 				<div class="row">
 					<div class="col-sm-3"></div><div class="col-sm-3"><label>E-mail</label></div><div class="col-sm-3"><input type="text" name="email" value="<?php echo($row["email"]); ?>" /></div><div class="col-sm-3"></div>
+				</div>
+                <div class="row">
+					<div class="col-sm-3"></div><div class="col-sm-3"><label>Repetir E-mail</label></div><div class="col-sm-3"><input type="text" name="email2" value="<?php echo($row["email"]); ?>" /></div><div class="col-sm-3"></div>
 				</div>
 				<div class="row">
 					<div class="col-sm-3"></div><div class="col-sm-3"><label>Nombre</label></div><div class="col-sm-3"><input type="text" name="nombre" value="<?php echo($row["nombre"]); ?>" /></div><div class="col-sm-3"></div>
@@ -32,6 +38,7 @@
 					<div class="col-sm-3"></div><div class="col-sm-3"><label>Fecha de nacimiento</label></div><div class="col-sm-3"><input type="text" id="calendario" name="fechanac" value="<?php echo($row["fechanac"]); ?>" /></div><div class="col-sm-3"></div>
 				</div>
                 <div class="row">
+                    <br>
 					<div class="col-sm-3"></div><div class="col-sm-9">
 						<button type="reset">Restaurar</button>
 						<button type="button" onclick="ValidarFormulario()" >Modificar registro</button>
@@ -42,5 +49,3 @@
 	
 
 <?php include "footer.php" ?>
-
-onclick="location.href='modificar.php?<?php echo $user ?>'"
