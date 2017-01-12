@@ -124,8 +124,8 @@
         
         </div>
         <div class="lista acordeon"></div>
-        <div class="modif acordeon">cacafú</div>
-        <div class="borrar acordeon">sdgsfedrfhbds</div>
+        <div class="modif acordeon"></div>
+        <div class="borrar acordeon"></div>
             
 
 	

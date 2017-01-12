@@ -29,7 +29,8 @@ i{
 
 .loginaso .textoform{
 	text-align: left;
-	padding-left: 2.5em;
+	padding-left: 1.5em;
+    margin-right: 0;
 }
 
 .consiertaso{
@@ -194,21 +195,23 @@ footer{
     margin: auto;
 }  
 
-.piedefoto{
-	position: absolute;
-	float: left;
-	bottom: 0;
-	width: 100%;
-	background-color: RGBA(60,154,130, 1);
-	z-index: 50;
-}
 
 /* SLIDER */
-#slider{ 
+
+#slider{
 	height: 100%;
 	width: 100%;
 	overflow: hidden;
 	position: relative;
+}
+
+#sliderm{ 
+    text-align: center;
+	height: 40vmax;
+	width: 40vmax;
+	overflow: hidden;
+	position: relative;
+    margin: 0 5% 0 5%;
 }
 
 #fotos{
@@ -269,6 +272,15 @@ footer{
 	margin-right: 0.4em;
 	cursor: default;
 }
+
+.piedefoto{
+	position: absolute;
+	float: left;
+	bottom: 0;
+	width: 100%;
+	background-color: RGBA(60,154,130, 1);
+	z-index: 50;
+}
 /* */
 
 .boton{
@@ -302,12 +314,14 @@ footer{
     display: none;
     margin-bottom: 5em;
 }
-td{
+
+.usuarios td{
     background-color: RGBA(144,250,234, 0.2);
     border: 2px solid white;
     padding: 0.5em;
 }
-th{
+
+.usuarios th{
     background-color: RGBA(144,250,234, 0.4);
     border: 2px solid white;
     padding: 0.5em;

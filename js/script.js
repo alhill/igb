@@ -11,6 +11,12 @@ function Correito()
 }
 
 $(document).ready(function(){
+    
+    //INICIO SLIDER
+    var izq = $("#flechaizda");
+	var dch = $("#flechadcha");
+	var pos = 0;
+    
 	function Izquierda(){
 		anchura = $(".lif").width();
 		if (pos == 0)
@@ -23,6 +29,31 @@ $(document).ready(function(){
 		}
 		$("#fotos").animate({left: pos},1000);
 	};
+    
+    function Derecha(){
+		anchura = $(".lif").width();
+		if (pos == -3*anchura)
+		{
+			pos = 0;
+		}
+		else
+		{
+			pos -= anchura;
+		}
+		$("#fotos").animate({left: pos},1000);
+	};	
+    
+    izq.click(function(){
+		Izquierda();
+	});
+    
+	dch.click(function(){
+		Derecha();
+	});
+    
+	setInterval(Derecha,10000);
+    //FIN SLIDER
+    
 	
     $("#botonalta").click(function(){   
         $(".lista").hide();
@@ -49,18 +80,7 @@ $(document).ready(function(){
         $(".borrar").slideDown();
     });
     
-	function Derecha(){
-		anchura = $(".lif").width();
-		if (pos == -3*anchura)
-		{
-			pos = 0;
-		}
-		else
-		{
-			pos -= anchura;
-		}
-		$("#fotos").animate({left: pos},1000);
-	};	
+
 	
 	$("nav .elemnav").hover(
 		function()
@@ -221,17 +241,6 @@ $(document).ready(function(){
       dateFormat: "yy-mm-dd"
     });
 	
-	var izq = $("#flechaizda");
-	var dch = $("#flechadcha");
-	var pos = 0;
-	
-	izq.click(function(){
-		Izquierda();
-	});
-	dch.click(function(){
-		Derecha();
-	});
-	setInterval(Derecha,10000);
 	
 	vecespinchadomas = 0
 	$("#mas").click(function(){

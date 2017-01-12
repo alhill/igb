@@ -25,7 +25,7 @@
     }
     else
     {
-        $resultado = mysqli_query($conexion, "SELECT * FROM igb_users WHERE pw='$pw'");
+        $resultado = mysqli_query($conexion, "SELECT * FROM igb_users WHERE usuario='$usuario' AND pw='$pw' ");
         if (mysqli_num_rows($resultado)==0)
         {
             printf("La contraseña es incorrecta. Que te den\n");
@@ -33,6 +33,14 @@
         else
         {
             printf("Bienvenido " . $usuario);
+            if ($usuario == "admin_")
+            {
+                header('Location: index.php'); 
+            }
+            else
+            {
+                header('Location: igbadmin.php');
+            }
         }
     }
 
